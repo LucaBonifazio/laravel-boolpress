@@ -24,15 +24,6 @@ export default {
     Navbar,
     Footer,
   },
-  data() {
-    return {
-        arrPosts: [],
-    };
-  },
-  created() {
-    axios.get('/api/posts')
-      .then(response => this.arrPosts = response.data.result);
-  }
 }
 </script>
 

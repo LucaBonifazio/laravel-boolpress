@@ -5073,17 +5073,6 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     Navbar: _components_Navbar__WEBPACK_IMPORTED_MODULE_0__["default"],
     Footer: _components_Footer__WEBPACK_IMPORTED_MODULE_1__["default"]
-  },
-  data: function data() {
-    return {
-      arrPosts: []
-    };
-  },
-  created: function created() {
-    var _this = this;
-    axios.get('/api/posts').then(function (response) {
-      return _this.arrPosts = response.data.result;
-    });
   }
 });
 
@@ -5311,19 +5300,43 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
+      arrImgError: [],
       arrPosts: null,
-      urlApi: 'db_posts'
+      urlApi: "http://localhost:8000/api/posts"
     };
   },
   created: function created() {
     var _this = this;
     axios.get(this.urlApi).then(function (axiosResponse) {
-      _this.arrPosts = axiosResponse.data.response;
+      if (axiosResponse.data.success) {
+        _this.arrPosts = axiosResponse.data.result;
+      }
     });
+  },
+  methods: {
+    onImageError: function onImageError(id) {
+      this.arrImgError[id] = true;
+    }
   }
 });
 
@@ -12194,10 +12207,23 @@ var render = function () {
       _vm._l(_vm.arrPosts, function (post) {
         return _c("div", { key: post.id, staticClass: "col-sm-6 col-md-4" }, [
           _c("div", { staticClass: "card h-100" }, [
-            _c("img", {
-              staticClass: "card-img-top",
-              attrs: { src: post.image, alt: post.title },
-            }),
+            _vm.arrImgError[post.id] !== true
+              ? _c("img", {
+                  staticClass: "card-img-top",
+                  attrs: { src: post.image, alt: post.title },
+                  on: {
+                    error: function ($event) {
+                      return _vm.onImageError(post.id)
+                    },
+                  },
+                })
+              : _c("img", {
+                  staticClass: "card-img-top",
+                  attrs: {
+                    src: "https://thumbs.gfycat.com/AccurateUnfinishedBergerpicard-size_restricted.gif",
+                    alt: post.title,
+                  },
+                }),
             _vm._v(" "),
             _c("div", { staticClass: "card-body d-flex flex-column" }, [
               _c("h5", { staticClass: "card-title" }, [

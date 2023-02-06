@@ -2,13 +2,29 @@
     <section class="container">
         <h1>Sono i Posts</h1>
         <div class="row g-3">
-            <div v-for="post in arrPosts" :key="post.id" class="col-sm-6 col-md-4">
+            <div
+                v-for="post in arrPosts"
+                :key="post.id"
+                class="col-sm-6 col-md-4"
+            >
                 <div class="card h-100">
-                    <img :src="post.image" class="card-img-top" :alt="post.title">
+                    <img v-if="arrImgError[post.id] !== true"
+                        :src="post.image"
+                        class="card-img-top"
+                        :alt="post.title"
+                        @error="onImageError(post.id)"
+                    />
+                    <img v-else
+                        src="https://thumbs.gfycat.com/AccurateUnfinishedBergerpicard-size_restricted.gif"
+                        class="card-img-top"
+                        :alt="post.title"
+                    />
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">{{ post.title }}</h5>
                         <p class="card-text flex-grow-1">{{ post.excerpt }}</p>
-                        <a :href="'/posts/' + post.slug" class="btn btn-primary">Read</a>
+                        <a :href="'/posts/' + post.slug" class="btn btn-primary"
+                            >Read</a
+                        >
                     </div>
                 </div>
             </div>
@@ -17,22 +33,27 @@
 </template>
 
 <script>
-export default ({
-    data () {
-    return {
-      arrPosts: null,
-      urlApi: 'db_posts',
+export default {
+    data() {
+        return {
+            arrImgError: [],
+            arrPosts: null,
+            urlApi: "http://localhost:8000/api/posts",
+        };
+    },
+    created() {
+        axios.get(this.urlApi).then((axiosResponse) => {
+            if (axiosResponse.data.success) {
+                this.arrPosts = axiosResponse.data.result;
+            }
+        });
+    },
+    methods: {
+        onImageError(id) {
+            this.arrImgError[id] = true;
+        }
     }
-  },
-  created() {
-    axios.get(this.urlApi)
-      .then((axiosResponse) => {
-        this.arrPosts = axiosResponse.data.response;
-      });
-  },
-})
+};
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
