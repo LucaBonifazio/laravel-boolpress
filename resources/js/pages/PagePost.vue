@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section class="container">
         <h1>Sono il singolo post</h1>
         <div>Sono lo slug: {{ slug }}</div>
     </section>

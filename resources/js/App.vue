@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div>
         <header>
             <Navbar/>
         </header>
@@ -44,7 +44,13 @@ export default {
         height: 50px;
     }
 
+    footer {
+        background-color: rgb(173, 173, 173);
+    }
+
     main {
+        overflow: auto;
+        padding: 1rem;
         height: calc(100vh - 100px);
     }
 </style>

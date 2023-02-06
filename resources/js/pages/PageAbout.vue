@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section class="container">
         <h1>Sono l'About</h1>
         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Atque, expedita provident? Magnam aperiam ipsum et provident. Facilis reiciendis ratione optio molestias ea, asperiores, impedit error natus deserunt, sequi quidem architecto?
         Repellendus reiciendis magnam amet? Ipsam exercitationem atque quo vero qui! Consequuntur praesentium iusto culpa ratione adipisci animi fuga. Repellat pariatur in quisquam aperiam distinctio sint sit libero rerum nostrum repellendus.
@@ -37,20 +37,7 @@
         Repellendus esse eaque tenetur pariatur veritatis illum, minus voluptatibus. Voluptatibus quos veniam laborum? In, unde laudantium autem incidunt iusto aut pariatur repudiandae omnis, ab sunt, excepturi numquam facere atque laboriosam.
         Illo laborum, voluptatibus porro nostrum neque sed doloremque quas ut molestiae? Molestiae nobis tempore enim at! Nostrum, distinctio? Error quas nobis quasi corporis, dicta quibusdam accusantium explicabo necessitatibus sequi similique?
         Ipsum repudiandae atque dolore possimus ipsa, eaque quae ab aspernatur nesciunt enim odio. Delectus, animi. Dicta perferendis rem iusto hic, corporis accusantium deleniti ratione velit veritatis consectetur aspernatur dolores enim.
-        Nam tempora corrupti, doloremque nemo fugiat molestiae illo. Saepe dignissimos explicabo at autem omnis odio voluptates neque fugit sed vitae, eos officia molestias sint nihil obcaecati soluta, laboriosam vel cupiditate!
-        Eaque unde pariatur officiis velit quibusdam iure, recusandae quisquam quaerat odit obcaecati! Sit veniam fugiat facilis odit at, et aspernatur eligendi impedit vel voluptas veritatis repellendus corrupti asperiores magni delectus.
-        Inventore cupiditate fuga reprehenderit explicabo vel. Numquam aspernatur, eius dolor libero mollitia possimus fugit vero! Necessitatibus beatae, commodi fuga modi ab error expedita explicabo reiciendis at ex tempore qui accusantium.
-        Soluta error voluptatibus illo dolorum saepe officiis reiciendis veritatis aliquid deleniti? Culpa vero sint modi consectetur sapiente numquam quod, debitis ullam perferendis iusto deleniti nesciunt eius architecto similique cumque nisi.
-        Obcaecati maiores asperiores magni architecto earum porro nemo vitae sunt, vel, perspiciatis adipisci minus ex alias nihil vero voluptatem modi, eius ea laborum expedita harum? Id assumenda veniam velit consequatur.
-        Sed iusto inventore molestiae! Aliquam facere fuga est eum quos suscipit sit, perferendis, aut fugit eos ex sapiente, animi eaque laborum cupiditate. Explicabo possimus ducimus deleniti pariatur, commodi magni quo.
-        Itaque nisi vel animi ab voluptatem ipsum ratione culpa sed fugiat ex unde aperiam omnis voluptatum commodi fugit, ut quasi modi odit id nesciunt cum enim quae iste. Quos, consectetur.
-        Quis excepturi mollitia deleniti nobis voluptas quidem et illum possimus hic soluta eum quam vitae perferendis sed dicta, enim, voluptatum est consequatur saepe commodi quos dignissimos labore. Commodi, nostrum enim?
-        Autem illum cumque non, quisquam voluptas hic consequatur eligendi deserunt natus provident! Mollitia doloribus alias ad ducimus nobis, incidunt fugiat laboriosam nemo tenetur cumque, qui dolor eligendi natus quidem voluptates?
-        Optio, obcaecati quis eligendi quos eos temporibus impedit necessitatibus sint quidem hic nostrum qui amet nihil iusto. Porro consectetur pariatur, autem sunt accusantium repellat ullam. Magni accusamus necessitatibus beatae ipsum?
-        Sed eveniet cum dolor magni qui itaque officia ab quaerat impedit, explicabo incidunt quos ducimus facilis tempore iste eos sunt deserunt temporibus alias debitis suscipit amet earum! Facere, enim voluptatem.
-        Soluta doloribus, beatae est nisi quaerat cum tempora laborum, vel dignissimos velit eius repudiandae facilis sequi illum nostrum fugit distinctio quas? Illo, error tenetur numquam eum corrupti nobis atque qui.
-        Iste delectus minus quod pariatur corrupti excepturi voluptate. Vero non aperiam iste sit ipsam dolore, necessitatibus quia nobis aut eligendi inventore magnam nam a, veniam, dolorem obcaecati assumenda nesciunt perferendis.
-        Sapiente earum, laboriosam dolore fuga recusandae placeat veritatis officiis modi quibusdam? Laborum autem dolore repudiandae inventore quaerat commodi sit odit mollitia, non corrupti harum exercitationem quos, nostrum aspernatur ad deleniti.</p>
+        </p>
     </section>
 </template>
 

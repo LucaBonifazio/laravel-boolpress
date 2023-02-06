@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section class="container">
         <h1>Sono i Posts</h1>
         <div class="row g-3">
             <div v-for="post in arrPosts" :key="post.id" class="col-sm-6 col-md-4">
@@ -18,7 +18,18 @@
 
 <script>
 export default ({
-
+    data () {
+    return {
+      arrPosts: null,
+      urlApi: 'db_posts',
+    }
+  },
+  created() {
+    axios.get(this.urlApi)
+      .then((axiosResponse) => {
+        this.arrPosts = axiosResponse.data.response;
+      });
+  },
 })
 </script>
 

@@ -1,6 +1,6 @@
 <template>
-    <section>
-        <h1>Sono l'Home</h1>
+    <section class="container">
+        <h1>Sono la Home</h1>
     </section>
 </template>
 

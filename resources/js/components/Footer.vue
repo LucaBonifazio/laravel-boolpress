@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <section>
         <div class="text-center">Sono il Footer</div>
-    </div>
+    </section>
 </template>
 
 <script>
