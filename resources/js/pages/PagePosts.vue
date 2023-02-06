@@ -1,33 +1,28 @@
 <template>
     <section class="container">
-        <h1>Sono i Posts</h1>
-        <div class="row g-3">
+        <h1>Posts</h1>
+        <div class="row g-3" v-if="arrPosts">
             <div
                 v-for="post in arrPosts"
                 :key="post.id"
                 class="col-sm-6 col-md-4"
             >
                 <div class="card h-100">
-                    <img v-if="arrImgError[post.id] !== true"
+                    <img
                         :src="post.image"
-                        class="card-img-top"
-                        :alt="post.title"
-                        @error="onImageError(post.id)"
-                    />
-                    <img v-else
-                        src="https://thumbs.gfycat.com/AccurateUnfinishedBergerpicard-size_restricted.gif"
                         class="card-img-top"
                         :alt="post.title"
                     />
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">{{ post.title }}</h5>
                         <p class="card-text flex-grow-1">{{ post.excerpt }}</p>
-                        <a :href="'/posts/' + post.slug" class="btn btn-primary"
-                            >Read</a
-                        >
+                        <a :href="'/posts/' + post.slug" class="btn btn-primary">Read</a>
                     </div>
                 </div>
             </div>
+        </div>
+        <div v-else>
+            <img class="w-100" src="https://media.tenor.com/OTzJy4d4xGMAAAAC/computer-stick-man.gif" alt="gif">
         </div>
     </section>
 </template>
@@ -36,7 +31,6 @@
 export default {
     data() {
         return {
-            arrImgError: [],
             arrPosts: null,
             urlApi: "http://localhost:8000/api/posts",
         };
@@ -48,11 +42,6 @@ export default {
             }
         });
     },
-    methods: {
-        onImageError(id) {
-            this.arrImgError[id] = true;
-        }
-    }
 };
 </script>
 

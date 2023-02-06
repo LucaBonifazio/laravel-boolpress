@@ -5263,9 +5263,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {};
+  },
   props: ['slug']
 });
 
@@ -5311,16 +5313,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      arrImgError: [],
       arrPosts: null,
       urlApi: "http://localhost:8000/api/posts"
     };
@@ -5332,11 +5328,6 @@ __webpack_require__.r(__webpack_exports__);
         _this.arrPosts = axiosResponse.data.result;
       }
     });
-  },
-  methods: {
-    onImageError: function onImageError(id) {
-      this.arrImgError[id] = true;
-    }
   }
 });
 
@@ -12170,9 +12161,7 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("section", { staticClass: "container" }, [
-    _c("h1", [_vm._v("Sono il singolo post")]),
-    _vm._v(" "),
-    _c("div", [_vm._v("Sono lo slug: " + _vm._s(_vm.slug))]),
+    _c("h1", [_vm._v(_vm._s(_vm.slug))]),
   ])
 }
 var staticRenderFns = []
@@ -12199,55 +12188,56 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("section", { staticClass: "container" }, [
-    _c("h1", [_vm._v("Sono i Posts")]),
+    _c("h1", [_vm._v("Posts")]),
     _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "row g-3" },
-      _vm._l(_vm.arrPosts, function (post) {
-        return _c("div", { key: post.id, staticClass: "col-sm-6 col-md-4" }, [
-          _c("div", { staticClass: "card h-100" }, [
-            _vm.arrImgError[post.id] !== true
-              ? _c("img", {
-                  staticClass: "card-img-top",
-                  attrs: { src: post.image, alt: post.title },
-                  on: {
-                    error: function ($event) {
-                      return _vm.onImageError(post.id)
-                    },
-                  },
-                })
-              : _c("img", {
-                  staticClass: "card-img-top",
-                  attrs: {
-                    src: "https://thumbs.gfycat.com/AccurateUnfinishedBergerpicard-size_restricted.gif",
-                    alt: post.title,
-                  },
-                }),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body d-flex flex-column" }, [
-              _c("h5", { staticClass: "card-title" }, [
-                _vm._v(_vm._s(post.title)),
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "card-text flex-grow-1" }, [
-                _vm._v(_vm._s(post.excerpt)),
-              ]),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { href: "/posts/" + post.slug },
-                },
-                [_vm._v("Read")]
-              ),
-            ]),
-          ]),
-        ])
-      }),
-      0
-    ),
+    _vm.arrPosts
+      ? _c(
+          "div",
+          { staticClass: "row g-3" },
+          _vm._l(_vm.arrPosts, function (post) {
+            return _c(
+              "div",
+              { key: post.id, staticClass: "col-sm-6 col-md-4" },
+              [
+                _c("div", { staticClass: "card h-100" }, [
+                  _c("img", {
+                    staticClass: "card-img-top",
+                    attrs: { src: post.image, alt: post.title },
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "card-body d-flex flex-column" }, [
+                    _c("h5", { staticClass: "card-title" }, [
+                      _vm._v(_vm._s(post.title)),
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "card-text flex-grow-1" }, [
+                      _vm._v(_vm._s(post.excerpt)),
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { href: "/posts/" + post.slug },
+                      },
+                      [_vm._v("Read")]
+                    ),
+                  ]),
+                ]),
+              ]
+            )
+          }),
+          0
+        )
+      : _c("div", [
+          _c("img", {
+            staticClass: "w-100",
+            attrs: {
+              src: "https://media.tenor.com/OTzJy4d4xGMAAAAC/computer-stick-man.gif",
+              alt: "gif",
+            },
+          }),
+        ]),
   ])
 }
 var staticRenderFns = []
