@@ -5387,17 +5387,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      results: null,
-      urlApi: "http://localhost:8000/api/posts?page="
+      results: null
+      //urlApi: "http://localhost:8000/api/posts?page=",
     };
   },
+
   methods: {
     changePage: function changePage(page) {
       var _this = this;
-      axios.get(this.urlApi + page).then(function (axiosResponse) {
-        if (axiosResponse.data.success) {
-          _this.results = axiosResponse.data.results.data;
-        }
+      //     axios.get(this.urlApi + page).then((axiosResponse) => {
+      //         if (axiosResponse.data.success) {
+      //             this.results = axiosResponse.data.results.data;
+      //         }
+      //     });
+      axios.get('/api/posts?page=' + page).then(function (response) {
+        return _this.results = response.data.results;
       });
     }
   },
@@ -12369,7 +12373,7 @@ var render = function () {
           "div",
           { staticClass: "row g-3" },
           [
-            _vm._l(_vm.results, function (post) {
+            _vm._l(_vm.results.data, function (post) {
               return _c(
                 "div",
                 { key: post.id, staticClass: "col-sm-6 col-md-4" },

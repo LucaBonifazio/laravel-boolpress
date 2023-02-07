@@ -3,7 +3,7 @@
         <h1>Posts</h1>
         <div class="row g-3" v-if="results">
             <div
-                v-for="post in results"
+                v-for="post in results.data"
                 :key="post.id"
                 class="col-sm-6 col-md-4"
             >
@@ -63,16 +63,18 @@ export default {
     data() {
         return {
             results: null,
-            urlApi: "http://localhost:8000/api/posts?page=",
+            //urlApi: "http://localhost:8000/api/posts?page=",
         };
     },
     methods: {
         changePage(page) {
-            axios.get(this.urlApi + page).then((axiosResponse) => {
-            if (axiosResponse.data.success) {
-                this.results = axiosResponse.data.results.data;
-            }
-        });
+        //     axios.get(this.urlApi + page).then((axiosResponse) => {
+        //         if (axiosResponse.data.success) {
+        //             this.results = axiosResponse.data.results.data;
+        //         }
+        //     });
+        axios.get('/api/posts?page=' + page)
+                .then(response => this.results = response.data.results);
         }
     },
     created() {
