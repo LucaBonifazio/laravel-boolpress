@@ -2,6 +2,11 @@
     <section class="container">
         <div v-if="post">
             <h1>{{ slug }}</h1>
+            <img
+                :src="post.image"
+                class="card-img-top"
+                :alt="post.title"
+            >
             <h5>{{ post.title }}</h5>
             <p>{{ post.content }}</p>
         </div>
