@@ -19,4 +19,5 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/posts', 'Api\PostController@index')->name('post.index');
+Route::get('/posts/random', 'Api\PostController@random')->name('posts.random');
 Route::get('/posts/{post}', 'Api\PostController@show')->name('post.show');

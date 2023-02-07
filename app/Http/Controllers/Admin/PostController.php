@@ -15,9 +15,13 @@ use Symfony\Component\HttpKernel\Event\ViewEvent;
 class PostController extends Controller
 {
     private $validation = [
-        'category_id'  => 'integer|exists:categories,id',
-        'slug'         => 'string|required|max:100',
+        'slug'      => [
+            'required',
+            'string',
+            'max:100',
+        ],
         'title'        => 'string|required|max:100',
+        'category_id'  => 'integer|exists:categories,id',
         'tags'         => 'array',
         'tags.*'       => 'integer|exists:tags,id',
         'image'        => 'url|max:100',
@@ -64,20 +68,20 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validation['slug'] = 'unique:posts';
+        $this->validation['slug'][] = 'unique:posts';
         $request->validate($this->validation);
 
         $data = $request->all();
 
-        $data['uploaded_img'] = $data['uploaded_img'] ?? '';
-        $img_path = Storage::put('uploads', $data['uploaded_img']);
+        // $data['uploaded_img'] = $data['uploaded_img'] ?? '';
+        // $img_path = Storage::put('uploads', $data['uploaded_img']);
 
         $post = new Post;
         $post->slug          = $data['slug'];
         $post->title         = $data['title'];
         $post->category_id   = Auth::id();
         $post->image         = $data['image'];
-        $post->uploaded_img  = $img_path;
+        //$post->uploaded_img  = $img_path;
         $post->content       = $data['content'];
         $post->excerpt       = $data['excerpt'];
         $post->save();
@@ -130,15 +134,15 @@ class PostController extends Controller
 
         $data = $request->all();
 
-        $img_path = Storage::put('uploads', $data['uploaded_img']);
-        Storage::delete($post->uploaded_img);
+        // $img_path = Storage::put('uploads', $data['uploaded_img']);
+        // Storage::delete($post->uploaded_img);
 
 
         $post->slug          = $data['slug'];
         $post->title         = $data['title'];
         $post->category->id  = $data['category_id'];
         $post->image         = $data['image'];
-        $post->uploaded_img  = $img_path;
+        //$post->uploaded_img  = $img_path;
         $post->content       = $data['content'];
         $post->excerpt       = $data['excerpt'];
         $post->update();

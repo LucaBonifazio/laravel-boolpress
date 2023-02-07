@@ -43,25 +43,50 @@
         </div>
 
         <div class="mb-3">
-            <label for="category_id" class="form-label">Category</label>
-            <select type="number" class="form-control @error('category_id') is-invalid @enderror" id="category_id" name="category_id">
+            <label for="category_id" class="form-label">Categoria</label>
+            <select class="form-select @error('category_id') is-invalid @enderror" id="category_id" name="category_id">
                 @foreach ($categories as $category)
-                    @if ($post->category->name == $category->name)
-                        <option selected="selected" value="{{ $category->id }}">{{ $category->name }}</option>
-                    @else
-                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                    @endif
+                    {{-- TODO: controllare che la categoria non sia nulla --}}
+                    <option value="{{ $category->id }}" @if ($category->id == old('category_id', $post->category->id)) selected @endif>{{ $category->name }}</option>
                 @endforeach
             </select>
-            @error('category_id')
-                <div class="invalid-feedback">
+            <div class="invalid-feedback">
+                @error('category_id')
                     <ul>
-                        @foreach ($errors->get('category_id') as $message)
-                            <li>{{ $message }}</li>
+                        @foreach ($errors->get('category_id') as $error)
+                            <li>{{ $error }}</li>
                         @endforeach
                     </ul>
+                @enderror
+            </div>
+        </div>
+
+        <div class="col-12">
+            <h2>Tags</h2>
+            @foreach ($tags as $tag)
+                <div class="form-check">
+                    <input
+                        id="tag-{{ $tag->id }}"
+                        class="form-check-input @error('tags.*') is-invalid @enderror"
+                        type="checkbox"
+                        value="{{ $tag->id }}"
+                        name="tags[]"
+                        @if (in_array($tag->id, old('tags', $post->tags->pluck('id')->all()))) checked @endif
+                    >
+                    <label class="form-check-label" for="tag-{{ $tag->id }}">
+                        {{ $tag->name }}
+                    </label>
+                    <div class="invalid-feedback">
+                        @error('tags.*')
+                            <ul>
+                                @foreach ($errors->get('tags.*') as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        @enderror
+                    </div>
                 </div>
-            @enderror
+            @endforeach
         </div>
 
         <div class="mb-3">

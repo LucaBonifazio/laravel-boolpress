@@ -1,14 +1,14 @@
 <template>
     <section class="container">
-        <div v-if="post">
+        <div v-if="results">
             <h1>{{ slug }}</h1>
             <img
-                :src="post.image"
+                :src="results.image"
                 class="card-img-top"
-                :alt="post.title"
+                :alt="results.title"
             >
-            <h5>{{ post.title }}</h5>
-            <p>{{ post.content }}</p>
+            <h5>{{ results.title }}</h5>
+            <p>{{ results.content }}</p>
         </div>
         <div v-else>
             <img class="d-flex m-auto" src="https://media.tenor.com/OTzJy4d4xGMAAAAC/computer-stick-man.gif" alt="gif">
@@ -20,14 +20,14 @@
 export default ({
     data() {
         return {
-            post: null,
+            results: null,
             urlApi: ('http://localhost:8000/api/posts/' + this.slug),
         };
     },
     created() {
         axios.get(this.urlApi).then((axiosResponse) => {
             if (axiosResponse.data.success) {
-                this.post = axiosResponse.data.result;
+                this.results = axiosResponse.data.results;
             }
         });
     },

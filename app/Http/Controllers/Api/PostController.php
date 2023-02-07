@@ -11,20 +11,32 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::paginate(6);
 
         return response()->json([
             'success' => true,
-            'result' => $posts
+            'results' => $posts
         ]);
     }
 
 
     public function show(Post $post)
     {
+        $post = Post::where('id', $post->id)->with(['category', 'tags'])->first();
+
         return response()->json([
             'success' => true,
-            'result' => $post
+            'results' => $post
+        ]);
+    }
+
+    public function random() {
+        $posts = Post::inRandomOrder()->limit(9)->get();
+
+        return response()->json([
+            'success' => true,
+            'results' => $posts,
         ]);
     }
 }
+
