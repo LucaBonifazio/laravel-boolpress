@@ -16,13 +16,13 @@
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">{{ post.title }}</h5>
                         <p class="card-text flex-grow-1">{{ post.excerpt }}</p>
-                        <a :href="'/posts/' + post.slug" class="btn btn-primary">Read</a>
+                        <router-link :to="{ name: 'post', params: {slug: post.slug}}" class="btn btn-primary">Read</router-link>
                     </div>
                 </div>
             </div>
         </div>
         <div v-else>
-            <img class="w-100" src="https://media.tenor.com/OTzJy4d4xGMAAAAC/computer-stick-man.gif" alt="gif">
+            <img class="d-flex m-auto" src="https://media.tenor.com/OTzJy4d4xGMAAAAC/computer-stick-man.gif" alt="gif">
         </div>
     </section>
 </template>
@@ -45,4 +45,6 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+</style>

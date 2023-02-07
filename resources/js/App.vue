@@ -36,7 +36,7 @@ export default {
     }
 
     footer {
-        background-color: rgb(173, 173, 173);
+        background-color: rgb(231, 231, 231);
     }
 
     main {
