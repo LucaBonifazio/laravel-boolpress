@@ -20,8 +20,7 @@
                     </div>
                 </div>
             </div>
-
-            <nav class="mt-4">
+            <nav class="mt-3">
                 <ul class="pagination">
                     <li
                         class="page-item"
@@ -30,7 +29,6 @@
                     >
                         <span class="page-link">Previous</span>
                     </li>
-
                     <li
                         v-for="page in results.last_page"
                         :key="page"
@@ -40,8 +38,6 @@
                     >
                         <span class="page-link" href="">{{ page }}</span>
                     </li>
-
-
                     <li
                         class="page-item"
                         :class="{disabled: results.current_page == results.last_page}"
@@ -84,5 +80,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+    .pagination{
+        cursor: pointer,
+    };
 
 </style>
