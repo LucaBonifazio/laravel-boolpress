@@ -5,6 +5,7 @@ import App from './App.vue';
 import VueRouter from 'vue-router';
 import PageHome from './pages/PageHome';
 import PageAbout from './pages/PageAbout';
+import PageLeads from './pages/PageLeads';
 import PagePosts from './pages/PagePosts';
 import PagePost from './pages/PagePost';
 import Page404 from './pages/Page404';
@@ -21,6 +22,11 @@ const routes = [
         path: '/about',
         name: 'about',
         component: PageAbout,
+    },
+    {
+        path: '/leads',
+        name: 'leads',
+        component: PageLeads,
     },
     {
         path: '/posts',

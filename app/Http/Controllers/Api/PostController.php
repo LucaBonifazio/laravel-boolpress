@@ -11,7 +11,7 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts = Post::paginate(6);
+        $posts = Post::paginate();
 
         return response()->json([
             'success' => true,
@@ -24,10 +24,17 @@ class PostController extends Controller
     {
         $post = Post::where('id', $post->id)->with(['category', 'tags'])->first();
 
-        return response()->json([
-            'success' => true,
-            'results' => $post
-        ]);
+
+        if($post) {
+            return response()->json([
+                'success' => true,
+                'results' => $post
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+            ]);
+        }
     }
 
     public function random() {
@@ -39,4 +46,3 @@ class PostController extends Controller
         ]);
     }
 }
-

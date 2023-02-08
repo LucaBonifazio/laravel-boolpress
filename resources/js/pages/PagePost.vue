@@ -10,6 +10,9 @@
             <h5>{{ results.title }}</h5>
             <p>{{ results.content }}</p>
         </div>
+        <div v-else-if="!results">
+            <Page404/>
+        </div>
         <div v-else>
             <img class="d-flex m-auto" src="https://media.tenor.com/OTzJy4d4xGMAAAAC/computer-stick-man.gif" alt="gif">
         </div>
@@ -17,6 +20,8 @@
 </template>
 
 <script>
+import Page404 from './Page404.vue';
+
 export default ({
     data() {
         return {
@@ -24,6 +29,11 @@ export default ({
             urlApi: ('http://localhost:8000/api/posts/' + this.slug),
         };
     },
+
+    components: {
+        Page404,
+    },
+
     created() {
         axios.get(this.urlApi).then((axiosResponse) => {
             if (axiosResponse.data.success) {
